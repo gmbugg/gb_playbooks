@@ -1,0 +1,6 @@
+---
+ - name: "{{ reqd_state }} {{ pkg }}"
+   yum:
+     name: "{{ pkg }}"
+     state: "{{ reqd_state }}"
+   when: ansible_os_family=="RedHat"

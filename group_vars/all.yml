@@ -1,0 +1,3 @@
+---
+#package install state
+reqd_state: present

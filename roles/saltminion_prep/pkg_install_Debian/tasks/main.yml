@@ -1,0 +1,6 @@
+---
+ - name: "{{ reqd_state }} {{ pkg }}"
+   apt:
+     name: "{{ pkg }}"
+     state: "{{ reqd_state }}"
+   when: ansible_os_family=="Debian"

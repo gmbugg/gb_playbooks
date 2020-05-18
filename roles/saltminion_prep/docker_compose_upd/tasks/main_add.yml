@@ -1,0 +1,14 @@
+---
+- name: See if docker-compose.yml exists
+  stat:
+    path: /home/ansible/docker-compose.yml
+  register: docker_compose_exists
+
+- name: See if docker-compose-{{ app }}.yml exists
+  stat:
+    path: /home/ansible/docker-compose-{{ app }}.yml
+  register: docker_compose_app exists
+
+- name: "Run docker-compose up -d"
+  shell: docker-compose up -d
+  when: docker_compose_exists.stat.exists

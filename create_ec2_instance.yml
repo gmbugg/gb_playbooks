@@ -1,0 +1,13 @@
+---
+- name: get vars from ansible vault
+  include_vars: awsvars.yml
+
+- name: Create EC2 key pair
+  ec2_key:
+    name: "{{ ansible_key_name }}"
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key }}"
+    key_material: "{{ ssh_key }}"
+    region: "{{ aws_region }}"
+    state: present
+

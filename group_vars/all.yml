@@ -1,3 +1,5 @@
 ---
 #package install state
 reqd_state: present
+windows_host: False
+ansible_user: centos

@@ -1,0 +1,12 @@
+---
+- name: Ping all VMs
+  hosts: all
+  become: true
+  become_method: sudo
+  gather_facts: False
+  user: "{{ ansible_user }}"
+  vars:
+    - is_windows:  "{{ windows_host }}"
+  tasks:
+  - ping:
+    when: not is_windows

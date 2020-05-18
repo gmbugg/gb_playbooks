@@ -1,0 +1,20 @@
+---
+#saltminion_install
+- name: Check if install-salt.sh exists
+  stat:
+    path: /home/ansible/install-salt.sh
+  register: install_salt_sh
+
+- name: Install salt minion shell script
+  copy:
+    src: install-salt.sh
+    dest: /home/ansible/install-salt.sh
+    owner: root
+    group: root
+    mode: 750
+  when: install_salt_sh.stat.exists == False
+  register: install_salt_installed
+
+- name: Run script to install minion
+  shell: ./install-salt.sh
+  when: install_salt_installed.stat.exists == True
